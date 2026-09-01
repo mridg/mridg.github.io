@@ -1,0 +1,40 @@
+---
+layout: default
+---
+{% include base_path %}
+{%- assign _path = page.term_path | default: page.title | default: "page" | downcase | replace: " ", "-" -%}
+{%- if page.term_cmd -%}
+  {%- assign _cmd = page.term_cmd -%}
+{%- else -%}
+  {%- assign _cmd = "cat " | append: _path | append: ".md" -%}
+{%- endif -%}
+{%- if _path == "~" or _path == "" -%}
+  {%- assign _prompt_path = "~" -%}
+{%- else -%}
+  {%- assign _prompt_path = "~/" | append: _path -%}
+{%- endif -%}
+
+<main id="main" class="terminal-main term-page" role="main">
+  <div class="term">
+    <div class="term__bar">
+      <span class="term__dot" aria-hidden="true"></span>
+      <span class="term__dot" aria-hidden="true"></span>
+      <span class="term__dot" aria-hidden="true"></span>
+      <span class="term__bar-title">{{ _prompt_path }}</span>
+    </div>
+
+    <div class="term__body">
+      {% include prompt-line.html cmd=_cmd path=_prompt_path %}
+
+      {% if page.title %}<h1 class="term-page__title">{{ page.title }}</h1>{% endif %}
+
+      {% if page.term_prose %}
+        <div class="term__prose term-page__content">{{ content }}</div>
+      {% else %}
+        {{ content }}
+      {% endif %}
+
+      {% include prompt-line.html cmd="" path=_prompt_path cursor=true %}
+    </div>
+  </div>
+</main>

@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "default" # the available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "terminal" # options: "default", "air", "sunrise", "mint", "dirt", "contrast", "terminal"
 title                    : "Mridulla Ganesh"
 title_separator          : "-"
 name                     : &name "Mridulla Ganesh"
@@ -230,6 +230,9 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
+  writing:
+    output: true
+    permalink: /:collection/:path/
   talks:
     output: false
     permalink: /:collection/:path/
@@ -243,10 +246,10 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
       comments: true
-      share: true
+      share: false
       related: true
   # _pages
   - scope:
@@ -278,10 +281,19 @@ defaults:
       path: ""
       type: portfolio
     values:
+      layout: project
+      author_profile: false
+      share: false
+      comment: false
+  # _writing
+  - scope:
+      path: ""
+      type: writing
+    values:
       layout: single
-      author_profile: true
-      share: true
-      comment: true
+      author_profile: false
+      share: false
+      comments: true
   # _talks
   - scope:
       path: ""

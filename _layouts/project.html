@@ -1,0 +1,65 @@
+---
+layout: default
+---
+{% include base_path %}
+{%- assign _slug = page.slug | default: page.title | slugify -%}
+
+<main id="main" class="terminal-main term-proj" role="main">
+  <div class="term">
+    <div class="term__bar">
+      <span class="term__dot" aria-hidden="true"></span>
+      <span class="term__dot" aria-hidden="true"></span>
+      <span class="term__dot" aria-hidden="true"></span>
+      <span class="term__bar-title">~/projects/{{ _slug }}</span>
+    </div>
+
+    <div class="term-proj__panes">
+      <aside class="term-proj__tree" aria-label="projects">
+        <div class="term-proj__tree-label" aria-hidden="true">~/projects</div>
+        {% for p in site.portfolio %}
+          {%- assign p_slug = p.slug | default: p.title | slugify -%}
+          {%- if forloop.last -%}{%- assign branch = "└─" -%}{%- else -%}{%- assign branch = "├─" -%}{%- endif -%}
+          <a class="term-proj__file{% if p.url == page.url %} is-active{% endif %}" href="{{ base_path }}{{ p.url }}">
+            <span class="term-proj__branch" aria-hidden="true">{{ branch }}</span> {{ p_slug }}
+          </a>
+        {% endfor %}
+      </aside>
+
+      <article class="term-proj__main">
+        <div class="term-proj__crumb" aria-hidden="true">
+          <span class="term__p-sign">$</span> cat ~/projects/{{ _slug }}/README.md
+        </div>
+
+        <h1 class="term-proj__title">{{ page.title }}</h1>
+
+        <div class="term-proj__metarow">
+          {% if page.year %}<span>{{ page.year }}</span>{% endif %}
+          {% if page.stack %}<span>{{ page.stack }}</span>{% endif %}
+          {% if page.domain %}<span>{{ page.domain }}</span>{% endif %}
+          {% if page.tagline %}<span class="term-proj__tagline">{{ page.tagline }}</span>{% endif %}
+        </div>
+
+        <div class="term-proj__rule" aria-hidden="true"></div>
+
+        <div class="term__prose term-proj__body">
+          {{ content }}
+        </div>
+
+        <div class="term-proj__actions">
+          {% if page.repo %}<a class="term__chip is-accent" href="{{ page.repo }}" rel="noopener">repo ↗</a>{% endif %}
+          {% if page.writeup %}<a class="term__chip" href="{{ page.writeup }}" rel="noopener">writeup ↗</a>{% endif %}
+          {% for p in site.portfolio %}
+            {% if p.url == page.url %}
+              {% assign idx = forloop.index0 %}
+              {% assign nxt = idx | plus: 1 | modulo: site.portfolio.size %}
+            {% endif %}
+          {% endfor %}
+          {% assign nextp = site.portfolio[nxt] %}
+          {% if nextp %}
+            <a class="term__chip" href="{{ base_path }}{{ nextp.url }}">next: {{ nextp.slug | default: nextp.title | slugify }} →</a>
+          {% endif %}
+        </div>
+      </article>
+    </div>
+  </div>
+</main>

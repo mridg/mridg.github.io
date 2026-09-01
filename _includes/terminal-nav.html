@@ -1,0 +1,36 @@
+{%- comment -%}
+  Slim terminal top-nav. Replaces the academicpages masthead site-wide.
+  Left: prompt that links home + shows the current location.
+  Right: section links (current one marked) + the theme toggle (#theme-toggle
+  / #theme-icon reused so main.min.js binds it).
+{%- endcomment -%}
+{% include base_path %}
+{%- if page.term_path -%}
+  {%- assign _path = page.term_path -%}
+{%- elsif page.collection == "portfolio" -%}
+  {%- assign _slug = page.slug | default: page.title | slugify -%}
+  {%- assign _path = "projects/" | append: _slug -%}
+{%- elsif page.collection == "writing" -%}
+  {%- assign _slug = page.title | slugify -%}
+  {%- assign _path = "writing/" | append: _slug -%}
+{%- elsif page.layout == "single" and page.title -%}
+  {%- assign _path = "blog/" | append: page.title | slugify -%}
+{%- else -%}
+  {%- assign _path = page.title | default: "" | downcase | replace: " ", "-" -%}
+{%- endif -%}
+<nav class="term-nav" id="site-nav">
+  <a class="term-nav__prompt" href="{{ base_path }}/">
+    <span class="term-nav__u" aria-hidden="true">{{ site.data.shell.user }}@{{ site.data.shell.host }}</span><span class="term-nav__punc" aria-hidden="true">:</span><span class="term-nav__path">~{% if _path != "" %}/{{ _path | replace: " ", "-" | truncate: 44 }}{% endif %}</span><span class="term-nav__punc" aria-hidden="true">$</span>
+  </a>
+  <div class="term-nav__links">
+    {% for link in site.data.navigation.main %}
+      {%- assign _is_here = false -%}
+      {%- if page.url contains link.url and link.url != "/" -%}{%- assign _is_here = true -%}{%- endif -%}
+      <a class="term-nav__link{% if _is_here %} is-here{% endif %}"
+         href="{% unless link.url contains 'http' %}{{ base_path }}{% endunless %}{{ link.url }}">{{ link.title | downcase }}</a>
+    {% endfor %}
+    <button id="theme-toggle" class="term-nav__toggle" type="button" aria-label="toggle theme">
+      <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+    </button>
+  </div>
+</nav>

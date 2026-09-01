@@ -1,0 +1,56 @@
+/* ==========================================================================
+   TERMINAL THEME — dark (amber CRT)
+   Palette from the "Personal Site" Claude Design token sheet (2c).
+   ========================================================================== */
+
+/* Color codes used for the theme */
+$gray                       : #7a8288;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+
+/* Color codes used for the site */
+$danger-color               : #ee5f5b;
+$info-color                 : #d19a2e;
+$notice-color               : #3a3122;
+$success-color              : #7fb7a3;
+$warning-color              : #f89406;
+
+/* Other basic settings for the template */
+$border-radius              : 0;
+$box-shadow                 : none;
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 56px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+/* Dark amber terminal theme for the site */
+html[data-theme="dark"] {
+    --global-base-color                 : #d19a2e;
+    --global-bg-color                   : #12100b;
+    --global-footer-bg-color            : #0e0c08;
+    --global-border-color               : #3a3122;
+    --global-dark-border-color          : #4a4030;
+    --global-code-background-color      : #1c1810;
+    --global-code-text-color            : #f2d9a4;
+    --global-fig-caption-color          : #bfae8a;
+    --global-link-color                 : #d19a2e;
+    --global-link-color-hover           : #f2d9a4;
+    --global-link-color-visited         : #c98f28;
+    --global-masthead-link-color        : #bfae8a;
+    --global-masthead-link-color-hover  : #f2d9a4;
+    --global-text-color                 : #f2d9a4;
+    --global-text-color-light           : #bfae8a;
+    --global-thead-color                : #1c1810;
+
+    /* terminal-shell accents */
+    --term-surface                      : #0e100f;
+    --term-prompt-user                  : #7fb7a3;
+    --term-prompt-path                  : #8fa8c7;
+    --term-prompt-sign                  : #d19a2e;
+    --term-value                        : #e8ece9;
+    --term-dim                          : rgba(242, 217, 164, 0.42);
+    --term-row-highlight                : rgba(209, 154, 46, 0.09);
+}
