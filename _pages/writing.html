@@ -1,0 +1,23 @@
+---
+layout: terminal-page
+title: "Writing"
+permalink: /writing/
+term_path: writing
+term_cmd: "ls ~/writing/"
+---
+{% include base_path %}
+
+<p class="term-index__blurb">Longer-form writing — essays, technical write-ups, and other things that don't fit in a blog post.</p>
+
+<div class="term-index">
+  {% assign items = site.writing | sort: "date" | reverse %}
+  {% for post in items %}
+    <a class="term-index__row is-file" href="{{ base_path }}{{ post.url }}">
+      <span class="term-index__perm" aria-hidden="true">-rw-r--r--</span>
+      <span class="term-index__date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <span class="term-index__name">{{ post.title }}</span>
+      <span class="term-index__go" aria-hidden="true">→</span>
+    </a>
+    {% if post.excerpt %}<p class="term-index__excerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncate: 180 }}</p>{% endif %}
+  {% endfor %}
+</div>

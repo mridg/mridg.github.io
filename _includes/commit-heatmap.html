@@ -1,0 +1,55 @@
+{%- comment -%}
+  Contribution heatmap for the `git log` block. Reads the real GitHub
+  contribution calendar (public contributions, last 52 weeks) from the
+  open github-contributions-api. Progressive enhancement: the static line
+  always renders; on any failure the grid just stays empty.
+{%- endcomment -%}
+<div class="term__git">
+  <div class="term__heatmap" id="term-heatmap" aria-hidden="true"></div>
+  <div class="term__git-meta">
+    <div><strong id="term-heatmap-count">—</strong> contributions · last year</div>
+    <div><a href="https://github.com/{{ site.author.github }}" rel="noopener">github.com/{{ site.author.github }} ↗</a></div>
+  </div>
+</div>
+<script>
+(function () {
+  var user = {{ site.author.github | jsonify }};
+  var grid = document.getElementById("term-heatmap");
+  var countEl = document.getElementById("term-heatmap-count");
+  if (!grid || !user) return;
+
+  var cs = getComputedStyle(document.documentElement);
+  var linkColor = cs.getPropertyValue("--global-link-color").trim() || "#d19a2e";
+  var emptyColor = cs.getPropertyValue("--global-border-color").trim() || "#3a3122";
+  var opacity = [1, 0.32, 0.55, 0.8, 1];
+
+  fetch("https://github-contributions-api.jogruber.de/v4/" + encodeURIComponent(user) + "?y=last")
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (data) {
+      var days = (data && data.contributions) || [];
+      if (!days.length) throw new Error("empty");
+
+      // pad the first (partial) week so weekday rows line up, GitHub-style
+      var lead = new Date(days[0].date + "T00:00:00").getDay();
+      for (var i = 0; i < lead; i++) {
+        var pad = document.createElement("span");
+        pad.style.visibility = "hidden";
+        grid.appendChild(pad);
+      }
+
+      days.forEach(function (d) {
+        var cell = document.createElement("span");
+        var lv = d.level || 0;
+        cell.style.background = lv > 0 ? linkColor : emptyColor;
+        cell.style.opacity = lv > 0 ? opacity[lv] : 1;
+        cell.title = d.count + (d.count === 1 ? " contribution" : " contributions") + " on " + d.date;
+        grid.appendChild(cell);
+      });
+
+      var total = (data.total && (data.total.lastYear != null ? data.total.lastYear
+        : data.total[Object.keys(data.total)[0]])) || 0;
+      countEl.textContent = total.toLocaleString();
+    })
+    .catch(function () { countEl.textContent = "—"; });
+})();
+</script>

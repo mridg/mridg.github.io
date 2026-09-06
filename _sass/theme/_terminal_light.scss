@@ -1,0 +1,57 @@
+/* ==========================================================================
+   TERMINAL THEME — light (amber on cream)
+   The light half of the pair, matching the Claude Design canvas chrome.
+   ========================================================================== */
+
+/* Color codes used for the theme */
+$gray                       : #7a8288;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+$lighter-gray               : mix(#fff, $gray, 90%);
+
+/* Color codes used for the site */
+$danger-color               : #c0392b;
+$info-color                 : #8a5a14;
+$notice-color               : #e2ddce;
+$success-color              : #3f7a68;
+$warning-color              : #b9770e;
+
+/* Other basic settings for the template */
+$border-radius              : 0;
+$box-shadow                 : none;
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 56px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+/* Light amber-on-cream theme for the site */
+:root {
+    --global-base-color                 : #8a5a14;
+    --global-bg-color                   : #e8e6e0;
+    --global-footer-bg-color            : #ded9cc;
+    --global-border-color               : #d3cdbf;
+    --global-dark-border-color          : #bdb6a3;
+    --global-code-background-color      : #f2f0e9;
+    --global-code-text-color            : #2a2620;
+    --global-fig-caption-color          : #6b6459;
+    --global-link-color                 : #8a5a14;
+    --global-link-color-hover           : #5c3c0c;
+    --global-link-color-visited         : #6f4a11;
+    --global-masthead-link-color        : #4a4335;
+    --global-masthead-link-color-hover  : #1a1712;
+    --global-text-color                 : #2a2620;
+    --global-text-color-light           : #6b6459;
+    --global-thead-color                : #dcd7c8;
+
+    /* terminal-shell accents */
+    --term-surface                      : #f3f1ea;
+    --term-prompt-user                  : #3f7a68;
+    --term-prompt-path                  : #3c5a86;
+    --term-prompt-sign                  : #8a5a14;
+    --term-value                        : #1a1712;
+    --term-dim                          : rgba(42, 38, 32, 0.5);
+    --term-row-highlight                : rgba(138, 90, 20, 0.08);
+}

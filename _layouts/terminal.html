@@ -1,0 +1,149 @@
+---
+layout: compress
+---
+{% include base_path %}
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
+
+  <body class="layout--terminal">
+    {% include browser-upgrade.html %}
+
+    <main id="main" class="terminal-main" role="main">
+      <div class="term">
+
+        <div class="term__bar">
+          <span class="term__dot" aria-hidden="true"></span>
+          <span class="term__dot" aria-hidden="true"></span>
+          <span class="term__dot" aria-hidden="true"></span>
+          <span class="term__bar-title">{{ site.url | remove: "https://" | remove: "http://" }} — last build {{ site.time | date: "%b %-d %Y" }}</span>
+          <button id="theme-toggle" class="term__toggle" type="button" aria-label="toggle theme">
+            <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="term__body">
+          <h1 class="visually-hidden">{{ site.author.name }} — {{ site.description }}</h1>
+
+          {% comment %} whoami {% endcomment %}
+          <section class="term__block">
+            {% include prompt-line.html cmd="whoami" %}
+            <dl class="term__whoami">
+              {% for row in site.data.shell.whoami %}
+                <dt>{{ row.label }}</dt>
+                <dd{% if row.strong %} class="is-strong"{% endif %}>{{ row.value }}</dd>
+              {% endfor %}
+              <dt>contact</dt>
+              <dd>
+                <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+                <span class="term__p-punc" aria-hidden="true"> · </span>
+                <a href="https://github.com/{{ site.author.github }}" rel="noopener">github.com/{{ site.author.github }}</a>
+                {% if site.author.linkedin %}
+                <span class="term__p-punc" aria-hidden="true"> · </span>
+                <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" rel="noopener">linkedin</a>
+                {% endif %}
+                <span class="term__p-punc" aria-hidden="true"> · </span>
+                <a href="{{ base_path }}/files/cv.pdf">cv.pdf</a>
+              </dd>
+            </dl>
+          </section>
+
+          {% comment %} ls -l projects/ {% endcomment %}
+          <section class="term__block">
+            {% include prompt-line.html cmd="ls -l projects/" %}
+            <div class="term__table">
+              <div class="term__tr is-head" aria-hidden="true">
+                <span>name</span><span>stack</span><span>domain</span><span>year</span>
+              </div>
+              {% for post in site.portfolio %}
+                {% assign _alt = forloop.index | modulo: 2 %}
+                <div class="term__tr{% if _alt == 0 %} is-alt{% endif %}">
+                  <span>
+                    <a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>
+                    {% if post.tagline %}<span class="term__muted"> — {{ post.tagline }}</span>{% endif %}
+                  </span>
+                  <span class="term__cell-dim">{{ post.stack | default: "—" }}</span>
+                  <span class="term__cell-dim">{{ post.domain | default: "—" }}</span>
+                  <span class="term__cell-dim">{{ post.year | default: "—" }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          </section>
+
+          {% comment %} cat experience.log {% endcomment %}
+          <section class="term__block">
+            {% include prompt-line.html cmd="cat experience.log" %}
+            <div class="term__log">
+              {% for job in site.data.shell.experience %}
+                <div class="term__log-row">
+                  <span class="term__log-when">{{ job.when }}</span>
+                  <span>
+                    <span class="term__log-org">{{ job.org }}</span>
+                    <span class="term__log-role"> {{ job.role }}</span>
+                    <span class="term__log-blurb">{{ job.blurb }}</span>
+                  </span>
+                </div>
+              {% endfor %}
+            </div>
+          </section>
+
+          {% comment %} skills --tree {% endcomment %}
+          <section class="term__block">
+            {% include prompt-line.html cmd="skills --tree" %}
+            <div class="term__tree">
+              {% for grp in site.data.shell.skills %}
+                <div>
+                  <span class="term__tree-group">{{ grp.group }}</span><br>
+                  <span class="term__tree-lines">{{ grp.lines }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          </section>
+
+          {% comment %} git log {% endcomment %}
+          <section class="term__block">
+            {% include prompt-line.html cmd="git log --all --since=1.year" %}
+            {% include commit-heatmap.html %}
+          </section>
+
+          {% comment %} cat about.md — the editable narrative {% endcomment %}
+          {% assign _body = content | strip %}
+          {% if _body != "" %}
+          <section class="term__block">
+            {% include prompt-line.html cmd="cat about.md" %}
+            <div class="term__prose">{{ content }}</div>
+          </section>
+          {% endif %}
+
+          {% comment %} available commands {% endcomment %}
+          <section class="term__commands">
+            <div class="term__commands-label">available commands</div>
+            <div class="term__chips">
+              {% for link in site.data.navigation.main %}
+                <a class="term__chip" href="{% unless link.url contains 'http' %}{{ base_path }}{% endunless %}{{ link.url }}">{{ link.title | downcase }}</a>
+              {% endfor %}
+              <a class="term__chip is-accent" href="mailto:{{ site.author.email }}">contact</a>
+            </div>
+          </section>
+
+          <div class="term__block">
+            {% include prompt-line.html cmd="" cursor=true %}
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <div class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include footer.html %}
+      </footer>
+    </div>
+
+    {% include scripts.html %}
+  </body>
+</html>

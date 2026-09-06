@@ -1,0 +1,58 @@
+# Content for the terminal-shell homepage (_layouts/terminal.html).
+# Editing text here should never mean editing the layout.
+
+user: mridulla
+host: purdue
+
+# `whoami` — the label/value grid. `strong: true` brightens the value.
+# The contact row is built by the layout from _config.yml `author`.
+whoami:
+  - label: name
+    value: "Mridulla Ganesh"
+    strong: true
+  - label: studying
+    value: "Computer Engineering, Purdue University  // B.S. 2027, GPA 3.4"
+  - label: now
+    value: "New Product Development Co-Op, AMD  // Austin, TX"
+  - label: also
+    value: "Undergraduate researcher — AI network performance, w/ Dr. Xiaoqi Chen"
+  - label: into
+    value: "high performance computing · computer architecture · networks · embedded"
+
+# `cat experience.log`
+experience:
+  - when: "2026.05 — now"
+    org: "AMD"
+    role: "New Product Development Co-Op"
+    blurb: "Extending firmware emulation to model thermal and power behavior of AMD desktop processors; pre-silicon predictions wired into System Level Test workflows."
+  - when: "2025.08 — 2026.05"
+    org: "Purdue ECE"
+    role: "Teaching Assistant, Embedded Systems Lab"
+    blurb: "Embedded C on RP2350 — real-time concepts, interrupt handling, register-level interfacing, and debugging GPIO/UART/SPI/I2C with scopes and JTAG."
+  - when: "2025.05 — 2025.08"
+    org: "Coherent, Inc."
+    role: "Quality Engineering Intern"
+    blurb: "Python/OpenCV pipelines for AI-based defect detection on semiconductor wafer chucks; hardware failure analysis and root-cause investigation."
+  - when: "2025.01 — now"
+    org: "Purdue"
+    role: "Undergraduate Research — AI Network Performance"
+    blurb: "ns-3 and Astra-Sim experiments on the GPU cluster; an MSCCL++ extension to SimAI, characterizing NCCL collective bottlenecks for publication."
+
+# `skills --tree`
+skills:
+  - group: "languages/"
+    lines: |-
+      ├─ C · C++ · Python · CUDA
+      └─ Java · MATLAB · RISC-V asm
+  - group: "hardware/"
+    lines: |-
+      ├─ SystemVerilog · RTL design
+      └─ digital logic · architecture
+  - group: "networking/"
+    lines: |-
+      ├─ NCCL · RDMA · ns-3
+      └─ htsim · Astra-Sim
+  - group: "tools/"
+    lines: |-
+      ├─ Linux · Git
+      └─ LTspice · Autodesk Eagle

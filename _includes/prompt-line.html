@@ -1,0 +1,9 @@
+{%- comment -%}
+  One shell prompt line: user@host:path$ <cmd>
+  Params: include.cmd (command text, may be empty), include.path (default "~")
+  All punctuation is aria-hidden; the command text is readable.
+{%- endcomment -%}
+{%- assign _path = include.path | default: "~" -%}
+<p class="term__prompt">
+  <span class="term__p-user" aria-hidden="true">{{ site.data.shell.user }}@{{ site.data.shell.host }}</span><span class="term__p-punc" aria-hidden="true">:</span><span class="term__p-path" aria-hidden="true">{{ _path }}</span><span class="term__p-sign" aria-hidden="true">$</span><span class="term__cmd">{{ include.cmd }}</span>{%- if include.cursor -%}<span class="term__cursor" aria-hidden="true"></span>{%- endif -%}
+</p>

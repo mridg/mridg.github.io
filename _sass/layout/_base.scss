@@ -13,8 +13,7 @@ body {
   background-color: var(--global-bg-color);
 
   margin: 0;
-  padding: $masthead-height 0 0;
-  padding-bottom: 9em;
+  padding: 0 0 9em;
   font-family: $global-font-family;
   line-height: 1.5;
 
@@ -38,6 +37,19 @@ h1 {
 
 h2 {
   font-size: $type-size-4;
+}
+
+/* terminal theme: squared, tracked, uppercase headings */
+h1, h2,
+.page__title {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ...but not the inline-permalink titles in archive listings */
+.archive__item-title {
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 h3 {

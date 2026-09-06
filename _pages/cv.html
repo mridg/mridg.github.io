@@ -1,0 +1,102 @@
+---
+layout: terminal-page
+title: "CV"
+permalink: /cv/
+term_path: cv
+term_cmd: "cat cv.md"
+redirect_from:
+  - /resume
+  - /experience/
+  - /experience.html
+---
+{% include base_path %}
+
+<div class="term-cv">
+
+  <p class="term-cv__download">
+    <span class="term__p-sign" aria-hidden="true">$</span> open <a href="{{ base_path }}/files/cv.pdf">cv.pdf</a>
+    <span class="term-cv__hint" aria-hidden="true"># the printable one-pager</span>
+  </p>
+
+  {% comment %} ---- education ---- {% endcomment %}
+  <section class="term-cv__sec">
+    <p class="term__prompt"><span class="term__p-sign" aria-hidden="true">$</span><span class="term__cmd"> cat education</span></p>
+    {% for e in site.data.resume.education %}
+      <div class="term-cv__entry">
+        <div class="term-cv__when">{{ e.when }}</div>
+        <div class="term-cv__body">
+          <div class="term-cv__org">{{ e.school }}</div>
+          <div class="term-cv__role">{{ e.degree }}</div>
+          <ul class="term-cv__list">
+            {% for n in e.notes %}<li>{{ n }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+  {% comment %} ---- work ---- {% endcomment %}
+  <section class="term-cv__sec">
+    <p class="term__prompt"><span class="term__p-sign" aria-hidden="true">$</span><span class="term__cmd"> cat work.log</span></p>
+    {% for j in site.data.resume.experience %}
+      <div class="term-cv__entry">
+        <div class="term-cv__when">{{ j.when }}</div>
+        <div class="term-cv__body">
+          <div class="term-cv__org">{{ j.role }}</div>
+          <div class="term-cv__role">{{ j.org }}{% if j.where %} <span class="term-cv__where">· {{ j.where }}</span>{% endif %}</div>
+          <ul class="term-cv__list">
+            {% for b in j.bullets %}<li>{{ b }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+  {% comment %} ---- research ---- {% endcomment %}
+  <section class="term-cv__sec">
+    <p class="term__prompt"><span class="term__p-sign" aria-hidden="true">$</span><span class="term__cmd"> cat research.log</span></p>
+    {% for j in site.data.resume.research %}
+      <div class="term-cv__entry">
+        <div class="term-cv__when">{{ j.when }}</div>
+        <div class="term-cv__body">
+          <div class="term-cv__org">{{ j.role }}</div>
+          <div class="term-cv__role">{{ j.org }}{% if j.where %} <span class="term-cv__where">· {{ j.where }}</span>{% endif %}</div>
+          <ul class="term-cv__list">
+            {% for b in j.bullets %}<li>{{ b }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+  {% comment %} ---- projects ---- {% endcomment %}
+  <section class="term-cv__sec">
+    <p class="term__prompt"><span class="term__p-sign" aria-hidden="true">$</span><span class="term__cmd"> ls -l ~/projects/</span></p>
+    {% for p in site.data.resume.projects %}
+      <div class="term-cv__entry">
+        <div class="term-cv__when">{{ p.when }}</div>
+        <div class="term-cv__body">
+          <div class="term-cv__org">{{ p.name }}</div>
+          <ul class="term-cv__list">
+            {% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+    <p class="term-cv__more"><span class="term__p-sign" aria-hidden="true">$</span> cd <a href="{{ base_path }}/portfolio/">~/projects/</a> <span class="term-cv__hint" aria-hidden="true"># full write-ups</span></p>
+  </section>
+
+  {% comment %} ---- skills ---- {% endcomment %}
+  <section class="term-cv__sec">
+    <p class="term__prompt"><span class="term__p-sign" aria-hidden="true">$</span><span class="term__cmd"> cat skills</span></p>
+    <dl class="term-cv__skills">
+      {% for s in site.data.resume.skills %}
+        <div class="term-cv__skill">
+          <dt>{{ s.group }}</dt>
+          <dd>{{ s.items }}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+  </section>
+
+</div>
