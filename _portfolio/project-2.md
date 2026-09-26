@@ -20,4 +20,4 @@ workloads — findings are being used to validate results for a peer-reviewed pu
 Stack: ns-3 · Astra-Sim · NCCL · MSCCL++ · perf · Flamegraph · TensorBoard. Work with
 Dr. Xiaoqi Chen, Purdue.
 
-<p class="term-proj__todo">[Link the paper once it's out, or a writeup/poster if you have one.]</p>
+*[Link the paper once it's out, or a writeup/poster if you have one.]*

@@ -19,4 +19,4 @@ suite to validate both functional correctness and architectural performance.
 Built from the ISA spec rather than a reference design, which is where most of the
 debugging time went.
 
-<p class="term-proj__todo">[Add a repo/writeup link in the front matter, and drop in a block diagram or waveform capture when you have one.]</p>
+*[Add a repo/writeup link in the front matter, and drop in a block diagram or waveform capture when you have one.]*

@@ -19,4 +19,4 @@ performance.
 
 Purdue VIP SoCET — Datacenter Network Accelerator.
 
-<p class="term-proj__todo">[Add a repo link, demo, or diagram when you have one to share.]</p>
+*[Add a repo link, demo, or diagram when you have one to share.]*

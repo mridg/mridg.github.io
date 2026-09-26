@@ -1,24 +1,13 @@
 ---
-layout: terminal-page
+layout: archive
 title: "Projects"
 permalink: /portfolio/
-term_path: projects
-term_cmd: "ls -l ~/projects/"
+author_profile: true
 ---
+
 {% include base_path %}
 
-<div class="term-index">
-  <div class="term-index__meta" aria-hidden="true">total {{ site.portfolio | size }}</div>
-
-  {% for post in site.portfolio %}
-    <a class="term-index__row term-index__row--proj" href="{{ base_path }}{{ post.url }}">
-      <span class="term-index__perm" aria-hidden="true">drwxr-xr-x</span>
-      <span class="term-index__name">{{ post.title }}</span>
-      <span class="term-index__col">{{ post.stack | default: "—" }}</span>
-      <span class="term-index__col">{{ post.domain | default: "—" }}</span>
-      <span class="term-index__col">{{ post.year | default: "—" }}</span>
-      <span class="term-index__go" aria-hidden="true">→</span>
-      {% if post.tagline %}<span class="term-index__tag">{{ post.tagline }}</span>{% endif %}
-    </a>
-  {% endfor %}
-</div>
+{% assign projects = site.portfolio | sort: "year" | reverse %}
+{% for post in projects %}
+  {% include archive-single.html %}
+{% endfor %}
