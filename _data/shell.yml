@@ -11,7 +11,7 @@ whoami:
     value: "Mridulla Ganesh"
     strong: true
   - label: studying
-    value: "Computer Engineering, Purdue University  // B.S. 2027, GPA 3.4"
+    value: "Computer Engineering, Purdue University  // B.S. 2027"
   - label: now
     value: "New Product Development Co-Op, AMD  // Austin, TX"
   - label: also
