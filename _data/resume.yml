@@ -1,0 +1,72 @@
+# Full CV content, rendered as shell sections on /cv/ (_pages/cv.md).
+# The homepage's shorter version lives in _data/shell.yml.
+
+education:
+  - school: "Purdue University"
+    degree: "B.S. Computer Engineering"
+    when: "Aug 2023 — May 2027"
+    notes:
+      - "Cumulative GPA 3.4 / 4.0 · Dean's List, Semester Honors"
+      - "Coursework: ASIC Design, Microprocessor Systems, Data Structures, Computer Architecture"
+
+experience:
+  - org: "Advanced Micro Devices"
+    role: "New Product Development Co-Op"
+    where: "Austin, TX"
+    when: "May 2026 — Present"
+    bullets:
+      - "Extended firmware emulation code to model thermal and power behavior of AMD desktop processors, enabling pre-silicon power and thermal predictions"
+      - "Integrated emulation infrastructure with System Level Test workflows to predict real-world behavior"
+      - "Supported SLT bring-up and validation through debugging, characterization, and system-level test development"
+  - org: "Purdue University"
+    role: "Teaching Assistant, Embedded Systems Lab"
+    where: "West Lafayette, IN"
+    when: "Aug 2025 — May 2026"
+    bullets:
+      - "Mentored students in embedded C for RP2350 microcontrollers — real-time concepts, interrupt handling, and register-level hardware interfacing"
+      - "Debugged hardware-software integration issues across GPIO, UART, SPI, I2C, timers, and interrupts using oscilloscopes and JTAG debuggers"
+      - "Guided students in root-cause analysis of timing issues, memory-related failures, and protocol-level communication problems"
+  - org: "Coherent, Inc."
+    role: "Quality Engineering Intern"
+    where: "Monroe, CT"
+    when: "May 2025 — Aug 2025"
+    bullets:
+      - "Developed Python/OpenCV pipelines to process image data for AI-based defect detection of semiconductor wafer chucks"
+      - "Performed hardware failure analysis through physical inspection and root-cause investigation of component defects"
+
+research:
+  - org: "Purdue University — with Dr. Xiaoqi Chen"
+    role: "Undergraduate Research Assistant, AI Network Performance"
+    where: "West Lafayette, IN"
+    when: "Jan 2025 — Present"
+    bullets:
+      - "Evaluated SimAI for simulating NCCL collective communication in distributed AI training, identifying accuracy gaps in collective-operation modeling"
+      - "Designed and executed experiments on the GPU cluster using ns-3 and Astra-Sim; analyzed results with perf, Flamegraph, and TensorBoard to characterize bottlenecks and validate findings for peer-reviewed publications"
+      - "Architected and implemented an MSCCL++-based extension to SimAI to improve collective-communication simulation accuracy for distributed training workloads"
+  - org: "Purdue VIP SoCET — Datacenter Network Accelerator"
+    role: "Undergraduate Researcher"
+    where: "West Lafayette, IN"
+    when: "Aug 2025 — Present"
+    bullets:
+      - "Developed a Python-based emulation framework for a custom SmartNIC to enable pre-silicon software development and validation"
+      - "Implemented Ethernet and RDMA communication layers to bridge host software with accelerator hardware, enabling hardware-software co-design and system-level testing"
+      - "Designed workload-driven benchmarks using AICB to characterize SmartNIC functionality, packet processing behavior, and RDMA offload performance"
+
+projects:
+  - name: "Multicore RISC-V Processor with Cache Coherence"
+    when: "Jan 2026 — May 2026"
+    bullets:
+      - "Designed and implemented a multicore 5-stage pipelined RISC-V processor in SystemVerilog with instruction and data cache hierarchies"
+      - "Developed cache coherence protocols to maintain memory consistency across processor cores"
+      - "Implemented pipeline control logic including hazard detection, forwarding, and branch handling"
+      - "Built simulation-based verification infrastructure to validate functionality and architectural performance"
+
+skills:
+  - group: "Programming Languages"
+    items: "C · C++ · Python · CUDA · Java · MATLAB · RISC-V Assembly"
+  - group: "Hardware Design"
+    items: "SystemVerilog · RTL Design · Digital Logic Design · Computer Architecture"
+  - group: "Networking"
+    items: "NCCL · RDMA · ns-3 · htsim · Astra-Sim · Collective Communication · Network Emulation/Simulation"
+  - group: "Tools"
+    items: "Linux · Git · LTspice · Autodesk Eagle"

@@ -1,0 +1,15 @@
+---
+layout: archive
+title: "Writing"
+permalink: /writing/
+author_profile: true
+---
+
+{% include base_path %}
+
+<p>Longer-form writing — essays, technical write-ups, and other things that don't fit in a blog post.</p>
+
+{% assign items = site.writing | sort: "date" | reverse %}
+{% for post in items %}
+  {% include archive-single.html %}
+{% endfor %}

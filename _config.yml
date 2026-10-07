@@ -230,6 +230,9 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
+  writing:
+    output: true
+    permalink: /:collection/:path/
   talks:
     output: false
     permalink: /:collection/:path/
@@ -281,7 +284,16 @@ defaults:
       layout: single
       author_profile: true
       share: true
-      comment: true
+      comments: true
+  # _writing
+  - scope:
+      path: ""
+      type: writing
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
   # _talks
   - scope:
       path: ""
