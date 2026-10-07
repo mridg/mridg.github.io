@@ -12,32 +12,6 @@ redirect_from:
 
 <p><a href="{{ base_path }}/files/cv.pdf">Download a PDF of my CV</a></p>
 
-<h2>Education</h2>
-{% for e in site.data.resume.education %}
-  <p><strong>{{ e.degree }}</strong>, {{ e.school }} <em>({{ e.when }})</em></p>
-  <ul>{% for n in e.notes %}<li>{{ n }}</li>{% endfor %}</ul>
-{% endfor %}
-
-<h2>Work Experience</h2>
-{% for j in site.data.resume.experience %}
-  <p><strong>{{ j.role }}</strong>, {{ j.org }}{% if j.where %} — {{ j.where }}{% endif %} <em>({{ j.when }})</em></p>
-  <ul>{% for b in j.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
-{% endfor %}
-
-<h2>Research</h2>
-{% for j in site.data.resume.research %}
-  <p><strong>{{ j.role }}</strong>, {{ j.org }}{% if j.where %} — {{ j.where }}{% endif %} <em>({{ j.when }})</em></p>
-  <ul>{% for b in j.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
-{% endfor %}
-
-<h2>Projects</h2>
-{% for p in site.data.resume.projects %}
-  <p><strong>{{ p.name }}</strong> <em>({{ p.when }})</em></p>
-  <ul>{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
-{% endfor %}
-<p>Full write-ups are on the <a href="{{ base_path }}/portfolio/">Projects</a> page.</p>
-
-<h2>Skills</h2>
-<ul>
-  {% for s in site.data.resume.skills %}<li><strong>{{ s.group }}:</strong> {{ s.items }}</li>{% endfor %}
-</ul>
+<object class="cv-embed" data="{{ base_path }}/files/cv.pdf" type="application/pdf" width="100%" style="height: 85vh; min-height: 600px;">
+  <p>Your browser can't display the PDF here — <a href="{{ base_path }}/files/cv.pdf">open it directly</a>.</p>
+</object>
