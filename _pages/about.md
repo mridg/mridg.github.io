@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi! My name is Mridulla Ganesh and I'm a senior in Computer Engineering at Purdue University. I love learning about complex systems and their interactions, all the way from silicon to software! I've worked on building test systems for CPUs at AMD, studied datacenter network congestion with Dr. Xiaoqi Chen, and emulators to understand hardware-software interactions. For more details about my work, check out [](). 
+Hi! My name is Mridulla Ganesh and I'm a senior in Computer Engineering at Purdue University. I love learning about complex systems and their interactions, all the way from silicon to software! I've worked on building test systems for CPUs at AMD, studied datacenter network congestion with Dr. Xiaoqi Chen, and emulators to understand hardware-software interactions. For more details about my work, check out my [Projects](/portfolio/).
 
 ## Currently
 
